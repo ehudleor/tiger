@@ -136,5 +136,5 @@ if app_mode == 'Segment an Image':
     k_value = st.sidebar.number_input('Insert K value (number of clusters):', value=4, min_value = 1) # asks for input from the user
     st.sidebar.markdown('---') # adds a devider (a line)
     
-     attempts_value_slider = st.sidebar.slider('Number of attempts', value = 7, min_value = 1, max_value = 10) # slider example
+    attempts_value_slider = st.sidebar.slider('Number of attempts', value = 7, min_value = 1, max_value = 10) # slider example
     st.sidebar.markdown('---') # adds a devider (a line)
