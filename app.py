@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 
 ################################# function to segment using k-means
 
-
+# vars
+DEMO_IMAGE = 'demo.png' # a demo image for the segmentation page, if none is uploaded
+favicon = 'favicon.png'
 
 # main page
 st.set_page_config(page_title='K-Means - Yedidya Harris', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
