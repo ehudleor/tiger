@@ -38,3 +38,32 @@ st.markdown(
 )
 st.sidebar.title('Segmentation Sidebar')
 st.sidebar.subheader('Site Pages')
+
+# using st.cache so streamlit runs the following function only once, and stores in chache (until changed)
+@st.cache()
+
+# take an image, and return a resized that fits our page
+def image_resize(image, width=None, height=None, inter = cv2.INTER_AREA):
+    dim = None
+    (h,w) = image.shape[:2]
+    
+    if width is None and height is None:
+        return image
+    
+    if width is None:
+        r = width/float(w)
+        dim = (int(w*r),height)
+    
+    else:
+        r = width/float(w)
+        dim = (width, int(h*r))
+        
+    # resize the image
+    resized = cv2.resize(image, dim, interpolation=inter)
+    
+    return resized
+
+
+# add dropdown to select pages on left
+app_mode = st.sidebar.selectbox('Navigate',
+                                  ['About App', 'Segment an Image'])
