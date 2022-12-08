@@ -138,3 +138,14 @@ if app_mode == 'Segment an Image':
     
     attempts_value_slider = st.sidebar.slider('Number of attempts', value = 7, min_value = 1, max_value = 10) # slider example
     st.sidebar.markdown('---') # adds a devider (a line)
+    
+    
+     # read an image from the user
+    img_file_buffer = st.sidebar.file_uploader("Upload an image", type=['jpg', 'jpeg', 'png'])
+
+    # assign the uplodaed image from the buffer, by reading it in
+    if img_file_buffer is not None:
+        image = io.imread(img_file_buffer)
+    else: # if no image was uploaded, then segment the demo image
+        demo_image = DEMO_IMAGE
+        image = io.imread(demo_image)
