@@ -36,3 +36,5 @@ st.markdown(
 
 
 )
+st.sidebar.title('Segmentation Sidebar')
+st.sidebar.subheader('Site Pages')
