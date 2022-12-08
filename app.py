@@ -129,3 +129,9 @@ if app_mode == 'Segment an Image':
 
 
     )
+    
+    
+    
+    # choosing a k value (either with +- or with a slider)
+    k_value = st.sidebar.number_input('Insert K value (number of clusters):', value=4, min_value = 1) # asks for input from the user
+    st.sidebar.markdown('---') # adds a devider (a line)
