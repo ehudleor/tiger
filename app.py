@@ -154,3 +154,11 @@ if app_mode == 'Segment an Image':
          # display on the sidebar the uploaded image
     st.sidebar.text('Original Image')
     st.sidebar.image(image)
+    
+    
+    ############################################### call the function to segment the image
+    
+    
+        # Display the result on the right (main frame)
+    st.subheader('Output Image')
+    st.image(segmented_image, use_column_width=True)
