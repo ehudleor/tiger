@@ -3,3 +3,5 @@ streamlit
 scikit-image
 opencv-contrib-python-headless
 matplotlib
+pandas
+imutils
