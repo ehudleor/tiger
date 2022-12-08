@@ -149,3 +149,8 @@ if app_mode == 'Segment an Image':
     else: # if no image was uploaded, then segment the demo image
         demo_image = DEMO_IMAGE
         image = io.imread(demo_image)
+
+        
+         # display on the sidebar the uploaded image
+    st.sidebar.text('Original Image')
+    st.sidebar.image(image)
