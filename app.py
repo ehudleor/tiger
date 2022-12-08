@@ -71,3 +71,37 @@ app_mode = st.sidebar.selectbox('Navigate',
 
 if app_mode == 'About App':
     st.markdown('In this app we will segment images using K-Means')
+    
+    
+     # side bar
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"][aria-expanded="true"] . div:first-child{
+            width: 350px
+        }
+
+        [data-testid="stSidebar"][aria-expanded="false"] . div:first-child{
+            width: 350px
+            margin-left: -350px
+        }    
+        </style>
+
+        """,
+        unsafe_allow_html=True,
+
+
+    )
+
+    # add a video to the page
+    st.video('https://www.youtube.com/watch?v=6CqRnx6Ic48')
+
+
+    st.markdown('''
+                ## About the app \n
+                Hey, this web app is a great one to segment images using K-Means. \n
+                There are many way. \n
+                Enjoy! Yedidya
+
+
+                ''') 
