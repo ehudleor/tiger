@@ -93,9 +93,6 @@ if app_mode == 'About App':
 
     )
 
-    # add a video to the page
-    st.video('https://www.youtube.com/watch?v=6CqRnx6Ic48')
-
 
     st.markdown('''
                 ## About the app \n
@@ -105,3 +102,30 @@ if app_mode == 'About App':
 
 
                 ''') 
+    
+    
+    
+    # Run image
+if app_mode == 'Segment an Image':
+    
+    st.sidebar.markdown('---') # adds a devider (a line)
+    
+    # side bar
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"][aria-expanded="true"] . div:first-child{
+            width: 350px
+        }
+
+        [data-testid="stSidebar"][aria-expanded="false"] . div:first-child{
+            width: 350px
+            margin-left: -350px
+        }    
+        </style>
+
+        """,
+        unsafe_allow_html=True,
+
+
+    )
