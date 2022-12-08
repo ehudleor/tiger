@@ -67,3 +67,7 @@ def image_resize(image, width=None, height=None, inter = cv2.INTER_AREA):
 # add dropdown to select pages on left
 app_mode = st.sidebar.selectbox('Navigate',
                                   ['About App', 'Segment an Image'])
+
+
+if app_mode == 'About App':
+    st.markdown('In this app we will segment images using K-Means')
