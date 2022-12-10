@@ -156,13 +156,14 @@ if app_mode == 'Segment an Image':
 
         
          # display on the sidebar the uploaded image
-    img = otsu_process(image)
+    
     st.sidebar.text('Original Image')
-    st.sidebar.image(img)
+    st.sidebar.image(image)
     
     
     ############################################### call the function to segment the image
     img = otsu_process(image)
+    img = img*100
     #counr the green pixels
     ##leaf_count = np.sum((np.array(img) >0)&(np.array(img) <2))
     ##bg_count = np.sum((np.array(img) ==0)|(np.array(img) ==2))
