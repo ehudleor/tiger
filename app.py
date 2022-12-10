@@ -12,11 +12,12 @@ import imutils
 # check versions
 #np.__version__
 
-def otsu_process(file_path):
-  img = io.imread(file_path)
-  img_gray = io.imread(file_path, as_gray=True)
-  thresholds = threshold_multiotsu(img_gray, classes=3)  #find the values of the thresholds
-  regions = np.digitize(img_gray, bins=thresholds)
+def otsu_process(imag):
+  ##img = io.imread(file_path)
+  ##img_gray = io.imread(file_path, as_gray=True)
+  masked_image_grayscale = rgb2gray(imag)
+  thresholds = threshold_multiotsu(masked_image_grayscale, classes=3)  #find the values of the thresholds
+  regions = np.digitize(masked_image_grayscale, bins=thresholds)
   plt.imshow(regions, cmap = 'Greens_r')
   return regions
 
@@ -160,7 +161,7 @@ if app_mode == 'Segment an Image':
     
     
     ############################################### call the function to segment the image
-    img = otsu_process(f'{img_file_buffer}')
+    img = otsu_process(image)
     #counr the green pixels
     ##leaf_count = np.sum((np.array(img) >0)&(np.array(img) <2))
     ##bg_count = np.sum((np.array(img) ==0)|(np.array(img) ==2))
