@@ -26,7 +26,7 @@ favicon = 'favicon.png'
 
 # main page
 st.set_page_config(page_title='Multy Ossu - Ehud Leor', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
-st.title('Image Segmentation using K-Means, by Yedidya Harris')
+st.title('Image Segmentation using multy-otsu, by hud Leor')
 
 st.markdown(
     """
