@@ -159,27 +159,27 @@ if app_mode == 'Segment an Image':
     st.sidebar.image(image)
     
     
-############################################### call the function to segment the image
-img = otsu_process(f'{img_file_buffer}')
-#counr the green pixels
-##leaf_count = np.sum((np.array(img) >0)&(np.array(img) <2))
-##bg_count = np.sum((np.array(img) ==0)|(np.array(img) ==2))
-# Load Aruco detector
-##parameters = cv2.aruco.DetectorParameters_create()
-##aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
-# Get Aruco marker
-##corners, _, _ = cv2.aruco.detectMarkers(image, aruco_dict, parameters=parameters)
-# Draw polygon around the marker
-##int_corners = np.int0(corners)
-##cv2.polylines(image, int_corners, True, (0, 255, 0), 10)
-# Aruco Area
-##aruco_area = cv2.contourArea (corners[0])
-######print('AruCo Area:',aruco_area, 'px')
-# Pixel to cm ratio
-##pixel_cm_ratio = 5*5 / aruco_area# since the AruCo is 5*5 cm, so we devide 25 cm*cm by the number of pixels
-#####print('Ratio - Each pixel is',pixel_cm_ratio, 'cm*cm')
-##Area = leaf_count*pixel_cm_ratio
-###'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
-# Display the result on the right (main frame)
-st.subheader('Output Image')
-st.image(img, use_column_width=True)
+    ############################################### call the function to segment the image
+    img = otsu_process(f'{img_file_buffer}')
+    #counr the green pixels
+    ##leaf_count = np.sum((np.array(img) >0)&(np.array(img) <2))
+    ##bg_count = np.sum((np.array(img) ==0)|(np.array(img) ==2))
+    # Load Aruco detector
+    ##parameters = cv2.aruco.DetectorParameters_create()
+    ##aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
+    # Get Aruco marker
+    ##corners, _, _ = cv2.aruco.detectMarkers(image, aruco_dict, parameters=parameters)
+    # Draw polygon around the marker
+    ##int_corners = np.int0(corners)
+    ##cv2.polylines(image, int_corners, True, (0, 255, 0), 10)
+    # Aruco Area
+    ##aruco_area = cv2.contourArea (corners[0])
+    ######print('AruCo Area:',aruco_area, 'px')
+    # Pixel to cm ratio
+    ##pixel_cm_ratio = 5*5 / aruco_area# since the AruCo is 5*5 cm, so we devide 25 cm*cm by the number of pixels
+    #####print('Ratio - Each pixel is',pixel_cm_ratio, 'cm*cm')
+    ##Area = leaf_count*pixel_cm_ratio
+    ###'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
+    # Display the result on the right (main frame)
+    st.subheader('Output Image')
+    st.image(img, use_column_width=True)
