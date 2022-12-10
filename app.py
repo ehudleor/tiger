@@ -12,14 +12,20 @@ import imutils
 # check versions
 #np.__version__
 
-################################# function to segment using k-means
+def otsu_process(file_path):
+  img = io.imread(file_path)
+  img_gray = io.imread(file_path, as_gray=True)
+  thresholds = threshold_multiotsu(img_gray, classes=3)  #find the values of the thresholds
+  regions = np.digitize(img_gray, bins=thresholds)
+  plt.imshow(regions, cmap = 'Greens_r')
+  return regions
 
 # vars
 DEMO_IMAGE = 'demo.png' # a demo image for the segmentation page, if none is uploaded
 favicon = 'favicon.png'
 
 # main page
-st.set_page_config(page_title='K-Means - Yedidya Harris', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
+st.set_page_config(page_title='Multy Ossu - Ehud Leor', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
 st.title('Image Segmentation using K-Means, by Yedidya Harris')
 
 st.markdown(
@@ -74,7 +80,7 @@ app_mode = st.sidebar.selectbox('Navigate',
 
 
 if app_mode == 'About App':
-    st.markdown('In this app we will segment images using K-Means')
+    st.markdown('In this app we will segment images using multy-otsu')
     
     
      # side bar
@@ -100,9 +106,8 @@ if app_mode == 'About App':
 
     st.markdown('''
                 ## About the app \n
-                Hey, this web app is a great one to segment images using K-Means. \n
+                Hey, this web app is a great one to segment images using multy-otsu. \n
                 There are many way. \n
-                Enjoy! Yedidya
 
 
                 ''') 
@@ -136,12 +141,6 @@ if app_mode == 'Segment an Image':
     
     
     
-    # choosing a k value (either with +- or with a slider)
-    k_value = st.sidebar.number_input('Insert K value (number of clusters):', value=4, min_value = 1) # asks for input from the user
-    st.sidebar.markdown('---') # adds a devider (a line)
-    
-    attempts_value_slider = st.sidebar.slider('Number of attempts', value = 7, min_value = 1, max_value = 10) # slider example
-    st.sidebar.markdown('---') # adds a devider (a line)
     
     
      # read an image from the user
@@ -161,8 +160,27 @@ if app_mode == 'Segment an Image':
     
     
     ############################################### call the function to segment the image
-    
+    img = otsu_process(f'{img_file_buffer}')
+    #counr the green pixels
+    leaf_count = np.sum((np.array(img) >0)&(np.array(img) <2))
+    bg_count = np.sum((np.array(img) ==0)|(np.array(img) ==2))
+    # Load Aruco detector
+    parameters = cv2.aruco.DetectorParameters_create()
+    aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
+    # Get Aruco marker
+    corners, _, _ = cv2.aruco.detectMarkers(image, aruco_dict, parameters=parameters)
+    # Draw polygon around the marker
+    int_corners = np.int0(corners)
+    cv2.polylines(image, int_corners, True, (0, 255, 0), 10)
+    # Aruco Area
+    aruco_area = cv2.contourArea (corners[0])
+    ######print('AruCo Area:',aruco_area, 'px')
+    # Pixel to cm ratio
+    pixel_cm_ratio = 5*5 / aruco_area# since the AruCo is 5*5 cm, so we devide 25 cm*cm by the number of pixels
+    #####print('Ratio - Each pixel is',pixel_cm_ratio, 'cm*cm')
+    print('Leaf px count:', leaf_count, 'px')
+    print('Area:', leaf_count*pixel_cm_ratio, 'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
     
         # Display the result on the right (main frame)
     st.subheader('Output Image')
-    st.image(segmented_image, use_column_width=True)
+    st.image(img, use_column_width=True)
