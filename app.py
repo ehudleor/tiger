@@ -178,9 +178,9 @@ if app_mode == 'Segment an Image':
     # Pixel to cm ratio
     pixel_cm_ratio = 5*5 / aruco_area# since the AruCo is 5*5 cm, so we devide 25 cm*cm by the number of pixels
     #####print('Ratio - Each pixel is',pixel_cm_ratio, 'cm*cm')
-    print('Leaf px count:', leaf_count, 'px')
-    print('Area:', leaf_count*pixel_cm_ratio, 'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
-    
+    Leaf px count = leaf_count
+    Area = leaf_count*pixel_cm_ratio
+    ###'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
         # Display the result on the right (main frame)
     st.subheader('Output Image')
     st.image(img, use_column_width=True)
