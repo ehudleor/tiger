@@ -184,5 +184,5 @@ if app_mode == 'Segment an Image':
     Area = leaf_count*pixel_cm_ratio
     ###'cm\N{SUPERSCRIPT TWO},', 'which is:',  f'{0.0001*leaf_count*pixel_cm_ratio:.3f}', 'm\N{SUPERSCRIPT TWO}')
     # Display the result on the right (main frame)
-    st.subheader(f'the area of the laef:{Area:.3f} m\N{SUPERSCRIPT TWO}')
+    st.subheader(f'the area of the laef is:{Area:.3f} m\N{SUPERSCRIPT TWO}')
     st.image(img, use_column_width=True)
