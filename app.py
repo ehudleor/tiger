@@ -16,7 +16,7 @@ def otsu_process(imag):
   ##img = io.imread(file_path)
   ##img_gray = io.imread(file_path, as_gray=True)
   masked_image_grayscale = rgb2gray(imag)
-  thresholds = threshold_multiotsu(masked_image_grayscale, classes=3)  #find the values of the thresholds
+  thresholds = threshold_multiotsu(masked_image_grayscale, classes=4)  #find the values of the thresholds
   regions = np.digitize(masked_image_grayscale, bins=thresholds)
   #plt.imshow(regions, cmap = 'Greens_r')
   return regions
