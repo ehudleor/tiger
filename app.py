@@ -18,8 +18,8 @@ def otsu_process(imag):
   masked_image_grayscale = rgb2gray(imag)
   thresholds = threshold_multiotsu(masked_image_grayscale, classes=3)  #find the values of the thresholds
   regions = np.digitize(masked_image_grayscale, bins=thresholds)
-  plt.imshow(regions, cmap = 'Greens_r')
-  return regions
+  #plt.imshow(regions, cmap = 'Greens_r')
+  return plt.imshow(regions, cmap = 'Greens_r')
 
 # vars
 DEMO_IMAGE = 'demo.png' # a demo image for the segmentation page, if none is uploaded
